@@ -11,6 +11,7 @@ import Nav from './Navigation/Nav';
 import NavRouterLink from './Navigation/NavRouterLink';
 import LeafletMap from './Maps/LeafletMap';
 import ViewData from './ViewData/ViewData';
+import BarData from './BarData/BarData';
 
 export {
   BarChart,
@@ -26,4 +27,5 @@ export {
   NavRouterLink,
   LeafletMap,
   ViewData,
+  BarData,
 };

@@ -10,12 +10,12 @@ import d3 from 'd3';
 // each transaction for a particular year.
 // (dataByYear[year].amount)
 
-function makeDataByYear(data) {
+function makeDataByYear(jsondata) {
   // converts jsondata (array of objects) into a hashmap (object
   // with years as keys with values that are an array of
   // transaction/record objects)
   const dataByYear = {};
-  data.forEach((t) => {
+  jsondata.forEach((t) => {
     const year = t.tran_date.substring(0, 4);
     // assigns the year part of the tran_date string to 'year'
     const yearToUpdate = dataByYear[year];
@@ -28,6 +28,10 @@ function makeDataByYear(data) {
   return dataByYear;
   // Type: OBJECT
 }
+
+// function sumContributions(dataByYear) {
+//   Object.keys(dataByYear).forEach(function)
+// }
 
 export default class BarData extends Component {
   static displayName = 'BarData';
@@ -62,9 +66,8 @@ export default class BarData extends Component {
   }
 
   render() {
-
     return (
-
+      <p>{console.log(this.dataByYear, ' dataByYear')}</p>
     );
   }
 }

@@ -13,6 +13,7 @@ import headerStory from './Header.story';
 import Welcome from './Welcome';
 import leafletmapStory from './LeafletMap.story';
 import viewdatastory from './ViewData.story';
+import bardataStory from './BarData.story';
 
 import '../src/global.styles.css';
 
@@ -35,3 +36,4 @@ sliderStory();
 dropdownStory();
 leafletmapStory();
 viewdatastory();
+bardataStory();
