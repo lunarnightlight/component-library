@@ -29,9 +29,18 @@ function makeDataByYear(jsondata) {
   // Type: OBJECT
 }
 
-// function sumContributions(dataByYear) {
-//   Object.keys(dataByYear).forEach(function)
-// }
+function sumContributions(dataByYear) {
+  const year = Object.keys(dataByYear);
+  // year is an array of the year keys
+  console.log(year, 'year');
+  const totalContributions = dataByYear.forEach(dataByYear[year].reduce((prev, curr) => {
+    return prev + curr.amount;
+  }));
+  // dataByYear has year keys that have arrays (of transaction
+  // objects) as values.
+  console.log(totalContributions, typeof totalContributions);
+  return totalContributions;
+}
 
 export default class BarData extends Component {
   static displayName = 'BarData';
@@ -44,7 +53,7 @@ export default class BarData extends Component {
       // the API yet, so we write a placeholder for the data first,
       // and later update it with a life cycle method.
       // Not sure if I need this for the bar chart.
-      dataByYear: '',
+      dataByYear: [],
       totalContributions: '',
     };
   }
@@ -59,15 +68,18 @@ export default class BarData extends Component {
         // console.log(jsondata);
         // console.log(this, " this");
         const dataByYear = makeDataByYear(jsondata);
-        this.setState({ dataByYear });
-        console.log(dataByYear);
+        const totalContributions = sumContributions(dataByYear);
+        this.setState({ dataByYear, totalContributions });
+        // I need to finish the sumContributions function to include
+        // it in the setState here.
+        console.log(dataByYear, 'dataByYear from componentDidMount');
       });
       // .then(console.log(this.state.dataByYear));
   }
 
   render() {
     return (
-      <p>{console.log(this.dataByYear, ' dataByYear')}</p>
+      <p>{console.log(this.dataByYear, 'this.dataByYear in JSX')}</p>
     );
   }
 }
