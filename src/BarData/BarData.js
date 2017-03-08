@@ -20,9 +20,9 @@ function makeDataByYear(jsondata) {
     // assigns the year part of the tran_date string to 'year'
     const yearToUpdate = dataByYear[year];
     if (yearToUpdate) {
-      dataByYear[year].push(t.amount);
+      dataByYear[year].push(t);
     } else {
-      dataByYear[year] = [t.amount];
+      dataByYear[year] = [t];
     }
   });
   return dataByYear;
@@ -36,17 +36,14 @@ function sumContributions(dataByYear) {
   // const totalContributions = Object.keys(dataByYear).forEach(dataByYear[year].reduce((prev, curr) => {
   //   return prev + curr.amount;
   // }));
-  // const totalContributions = Object.keys(dataByYear).map((key) => {
-  //   const annualSums = dataByYear[year].reduce((sum, item) => sum + item.amount);
-  // })
+  const totalContributions = Object.keys(dataByYear).map((year) => {
+    dataByYear[year].reduce((sum, item) => sum + item.amount, 0);
+  });
   // dataByYear has year keys that have arrays (of transaction
   // objects) as values.
-  // console.log(totalContributions, typeof totalContributions);
+  console.log(totalContributions, typeof totalContributions);
   // return totalContributions;
-  const totalContributions = dataByYear;
-  for (const year in dataByYear) {
-    totalContributions[year] = dataByYear[year].reduce((prev, curr) => prev + curr);
-  }
+
   console.log(totalContributions, 'totalContributions from sumContributions function');
   return totalContributions;
 }
@@ -82,6 +79,7 @@ export default class BarData extends Component {
         // I need to finish the sumContributions function to include
         // it in the setState here.
         console.log(dataByYear, 'dataByYear from componentDidMount');
+        console.log(totalContributions, 'totalContributions from componentDidMount');
       });
       // .then(console.log(this.state.dataByYear));
   }
