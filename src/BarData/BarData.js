@@ -20,27 +20,30 @@ function makeDataByYear(jsondata) {
     // assigns the year part of the tran_date string to 'year'
     const yearToUpdate = dataByYear[year];
     if (yearToUpdate) {
-      dataByYear[year].push(t);
+      dataByYear[year].push(t.amount);
     } else {
-      dataByYear[year] = [t];
+      dataByYear[year] = [t.amount];
     }
   });
   return dataByYear;
   // Type: OBJECT
 }
 
-function sumContributions(dataByYear) {
-  const year = Object.keys(dataByYear);
-  // year is an array of the year keys
-  console.log(year, 'year');
-  const totalContributions = dataByYear.forEach(dataByYear[year].reduce((prev, curr) => {
-    return prev + curr.amount;
-  }));
-  // dataByYear has year keys that have arrays (of transaction
-  // objects) as values.
-  console.log(totalContributions, typeof totalContributions);
-  return totalContributions;
-}
+// function sumContributions(dataByYear) {
+//   // const years = Object.keys(dataByYear);
+//   // // years is an array of the year keys
+//   // console.log(years, 'years');
+//   // const totalContributions = Object.keys(dataByYear).forEach(dataByYear[year].reduce((prev, curr) => {
+//   //   return prev + curr.amount;
+//   // }));
+//   const totalContributions = Object.keys(dataByYear).map((key) => {
+//     const annualSums = dataByYear[year].reduce((sum, item) => sum + item.amount);
+//   })
+//   // dataByYear has year keys that have arrays (of transaction
+//   // objects) as values.
+//   // console.log(totalContributions, typeof totalContributions);
+//   // return totalContributions;
+// }
 
 export default class BarData extends Component {
   static displayName = 'BarData';
