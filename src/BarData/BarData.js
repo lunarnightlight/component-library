@@ -41,7 +41,7 @@ function sumContributions(dataByYear) {
   });
   // dataByYear has year keys that have arrays (of transaction
   // objects) as values.
-  console.log(totalContributions, typeof totalContributions);
+  console.log(totalContributions, typeof totalContributions, 'totalContributions in sumContributions');
   // return totalContributions;
 
   console.log(totalContributions, 'totalContributions from sumContributions function');
@@ -60,7 +60,7 @@ export default class BarData extends Component {
       // and later update it with a life cycle method.
       // Not sure if I need this for the bar chart.
       dataByYear: [],
-      totalContributions: '',
+      totalContributions: {},
     };
   }
 
@@ -90,3 +90,13 @@ export default class BarData extends Component {
     );
   }
 }
+
+BarData.displayName = 'BarData';
+
+makeDataByYear.propTypes = {
+  jsondata: React.PropTypes.array,
+};
+
+sumContributions.propTypes = {
+  dataByYear: React.PropTypes.object,
+};
