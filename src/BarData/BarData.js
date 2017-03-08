@@ -13,7 +13,7 @@ import d3 from 'd3';
 function makeDataByYear(jsondata) {
   // converts jsondata (array of objects) into a hashmap (object
   // with years as keys with values that are an array of
-  // transaction/record objects)
+  // transaction amounts)
   const dataByYear = {};
   jsondata.forEach((t) => {
     const year = t.tran_date.substring(0, 4);
@@ -29,21 +29,27 @@ function makeDataByYear(jsondata) {
   // Type: OBJECT
 }
 
-// function sumContributions(dataByYear) {
-//   // const years = Object.keys(dataByYear);
-//   // // years is an array of the year keys
-//   // console.log(years, 'years');
-//   // const totalContributions = Object.keys(dataByYear).forEach(dataByYear[year].reduce((prev, curr) => {
-//   //   return prev + curr.amount;
-//   // }));
-//   const totalContributions = Object.keys(dataByYear).map((key) => {
-//     const annualSums = dataByYear[year].reduce((sum, item) => sum + item.amount);
-//   })
-//   // dataByYear has year keys that have arrays (of transaction
-//   // objects) as values.
-//   // console.log(totalContributions, typeof totalContributions);
-//   // return totalContributions;
-// }
+function sumContributions(dataByYear) {
+  // const years = Object.keys(dataByYear);
+  // // years is an array of the year keys
+  // console.log(years, 'years');
+  // const totalContributions = Object.keys(dataByYear).forEach(dataByYear[year].reduce((prev, curr) => {
+  //   return prev + curr.amount;
+  // }));
+  // const totalContributions = Object.keys(dataByYear).map((key) => {
+  //   const annualSums = dataByYear[year].reduce((sum, item) => sum + item.amount);
+  // })
+  // dataByYear has year keys that have arrays (of transaction
+  // objects) as values.
+  // console.log(totalContributions, typeof totalContributions);
+  // return totalContributions;
+  const totalContributions = dataByYear;
+  for (const year in dataByYear) {
+    totalContributions[year] = dataByYear[year].reduce((prev, curr) => prev + curr);
+  }
+  console.log(totalContributions, 'totalContributions from sumContributions function');
+  return totalContributions;
+}
 
 export default class BarData extends Component {
   static displayName = 'BarData';
