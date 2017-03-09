@@ -30,14 +30,11 @@ function makeDataByYear(jsondata) {
 }
 
 function sumContributions(dataByYear) {
-  // const years = Object.keys(dataByYear);
-  // // years is an array of the year keys
-  // console.log(years, 'years');
-  // const totalContributions = Object.keys(dataByYear).forEach(dataByYear[year].reduce((prev, curr) => {
-  //   return prev + curr.amount;
-  // }));
   const totalContributions = Object.keys(dataByYear).map((year) => {
-    dataByYear[year].reduce((sum, item) => sum + item.amount, 0);
+    const individualYear = dataByYear[year];
+    // refers to the array attached to a year key
+    console.log(individualYear, 'individualYear in sumContributions');
+    return individualYear.reduce((sum, item) => sum + item.amount, 0);
   });
   // dataByYear has year keys that have arrays (of transaction
   // objects) as values.
@@ -59,7 +56,7 @@ export default class BarData extends Component {
       // the API yet, so we write a placeholder for the data first,
       // and later update it with a life cycle method.
       // Not sure if I need this for the bar chart.
-      dataByYear: [],
+      dataByYear: {},
       totalContributions: {},
     };
   }
@@ -94,7 +91,7 @@ export default class BarData extends Component {
 BarData.displayName = 'BarData';
 
 makeDataByYear.propTypes = {
-  jsondata: React.PropTypes.array,
+  jsondata: React.PropTypes.object,
 };
 
 sumContributions.propTypes = {

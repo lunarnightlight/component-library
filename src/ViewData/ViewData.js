@@ -6,7 +6,7 @@ function filterByYear(data, input) {
   const filtered = (data.filter((record) => {
     return record.tran_date.substring(0, 4).indexOf(input) !== -1;
   }));
-  console.log(typeof filtered, ' check type of filtered');   // object
+  console.log(typeof filtered, ' check type of filtered in filterByYear');   // object
   return filtered;
   // filtered is the jsondata object containing only the transactions of
   // a queried year
