@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import BarChart from './BarChart/BarChart';
 import Button from './Button/Button';
 import StoryCard from './StoryCard/StoryCard';
@@ -29,3 +30,17 @@ export {
   ViewData,
   BarData,
 };
+=======
+export BarChart from './BarChart/BarChart';
+export Sankey from './Sankey/Sankey';
+export Button from './Button/Button';
+export StoryCard from './StoryCard/StoryCard';
+export Chart from './Chart/Chart';
+export ChartData from './ChartData/ChartData';
+export DropdownMenu from './DropdownMenu/DropdownMenu';
+export Pie from './Pie/Pie';
+export Slider from './Slider/Slider';
+export Header from './Navigation/Header';
+export Nav from './Navigation/Nav';
+export NavRouterLink from './Navigation/NavRouterLink';
+>>>>>>> 68c412a29a62b930b1ec497f8027779ca0d66dcc
