@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import fetch from 'isomorphic-fetch';
+import fetch from 'isomorphic-fetch';
 import { Chart, ChartData, Pie } from '../';
 
 function filterByYear(data, input) {
@@ -107,7 +107,7 @@ export default class ViewData extends Component {
       );
     });
 
-    const filtered = this.state.data && filterByYear(this.state.data, this.state.input)
+    const filtered = this.state.data && filterByYear(this.state.data, this.state.input);
 
     const localColors = [
       '#a6cee3',
@@ -137,34 +137,34 @@ export default class ViewData extends Component {
     ];
 
     const getColors = (data, idx) => {
-      arguments.length === 2 ? localColors[idx] : localColors[data]
+      arguments.length === 2 ? localColors[idx] : localColors[data];
     };
 
     return (
       <div>
         <div style={{ display: 'flex', justifyContent: 'space-around', margin: '10% auto' }} >
-              <Chart width={600} height={250}>
-                <ChartData data={this.state.topFiveContributors}>
-                  <Pie
-                    innerRadius={75} outerRadius={125}
-                    onClick={(e, v, i) => {alert(`${labels[i]}`)}}
-                    style={(d, i) => ({ fill: getColors(i) })}
-                  >
-                    <text
-                      className="donut-title" textAnchor="middle"
-                      x={0} y={0} fontSize={20}
-                    >
-                      {`Top 5 Contributions for ${this.state.input || 'the Year'}`}
-                    </text>
-                    <text
-                      className="donut-subtitle" textAnchor="middle"
-                      x={0} y={18} fontSize={16}
-                    >
-                      {'(Filler Text)'}
-                    </text>
-                  </Pie>
-                </ChartData>
-              </Chart>
+          <Chart width={600} height={250}>
+            <ChartData data={this.state.topFiveContributors}>
+              <Pie
+                innerRadius={75} outerRadius={125}
+                onClick={(e, v, i) => { alert(`${labels[i]}`); }}
+                style={(d, i) => ({ fill: getColors(i) })}
+              >
+                <text
+                  className="donut-title" textAnchor="middle"
+                  x={0} y={0} fontSize={20}
+                >
+                  {`Top 5 Contributions for ${this.state.input || 'the Year'}`}
+                </text>
+                <text
+                  className="donut-subtitle" textAnchor="middle"
+                  x={0} y={18} fontSize={16}
+                >
+                  {'(Filler Text)'}
+                </text>
+              </Pie>
+            </ChartData>
+          </Chart>
         </div>
         <div>
           <input type="text" value={this.state.input} onChange={this.updateInput} />
