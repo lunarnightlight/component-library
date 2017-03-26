@@ -10,7 +10,7 @@ const mapClass = cx({ map: true });
 function addGeoData(WrappedComponent, gd, options) {
   // addGeoData takes in a component, augments it with data and other
   // methods, and returns the improved component. As a class
-  // component, the wrapper component able to maintain local state and
+  // component, the wrapper component is able to maintain local state and
   // pass data as props, but the wrapped component that gets "improved"
   // doesn't have local state.
   return class extends Component {
