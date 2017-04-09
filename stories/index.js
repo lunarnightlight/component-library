@@ -13,6 +13,7 @@ import headerStory from './Header.story';
 import leafletMap from './LeafletMap.story';
 import Welcome from './Welcome';
 import rechartsPie from './RechartsPie.story';
+import scatterplot from './Scatterplot.story';
 
 import '../src/global.styles.css';
 
@@ -35,3 +36,4 @@ sankeyStory();
 sliderStory();
 rechartsPie();
 leafletMap();
+scatterplot();
